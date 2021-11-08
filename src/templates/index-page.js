@@ -2,16 +2,14 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
 import Layout from '../components/Layout'
-import Content, { HTMLContent } from '../components/Content'
+import { HTMLContent } from '../components/Content'
 
 export const IndexPageTemplate = ({
   image,
   title,
   heading,
   content,
-  contentComponent,
 }) => {
-  const PostContent = contentComponent || Content
 
   return (
     <div>
@@ -67,7 +65,7 @@ export const IndexPageTemplate = ({
         <div className="container content">
           <div className="columns">
             <div className="column is-10 is-offset-1">
-              <PostContent className="content" content={content} />  
+              <HTMLContent className="content" content={content} />  
             </div>
           </div>
         </div>
@@ -81,7 +79,6 @@ IndexPageTemplate.propTypes = {
   title: PropTypes.string,
   heading: PropTypes.string,
   content: PropTypes.string,
-  contentComponent: PropTypes.func,
 }
 
 const IndexPage = ({ data }) => {
@@ -91,7 +88,6 @@ const IndexPage = ({ data }) => {
   return (
     <Layout>
       <IndexPageTemplate
-        contentCompontent={HTMLContent}
         image={frontmatter.image}
         title={frontmatter.title}
         heading={frontmatter.heading}
